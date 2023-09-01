@@ -1,0 +1,51 @@
+{
+  "name": "conduit-layout-feature",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/conduit/layout/feature/src",
+  "prefix": "conduit",
+  "tags": ["scope:conduit", "type:feature", "context:layout"],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/conduit/layout/feature/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/conduit/layout/feature/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/conduit/layout/feature/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/conduit/layout/feature/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/conduit/layout/feature/**/*.ts",
+          "libs/conduit/layout/feature/**/*.html",
+          "libs/conduit/layout/feature/package.json"
+        ]
+      }
+    }
+  }
+}
