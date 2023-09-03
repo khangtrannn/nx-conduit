@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
   imports: [RouterModule],
   selector: 'nx-conduit-root',
   template: `
-    Hello NX
+    <router-outlet></router-outlet>
   `,
   styleUrls: ['./app.component.scss'],
 })
